@@ -7,7 +7,7 @@ Execute the following command:
 echo '{
   "apiVersion": "credentialprovider.kubelet.k8s.io/v1",
   "kind": "CredentialProviderRequest",
-  "image": "fra.ocir.io/demo_namespace/demo_repo/demo_image"
+  "image": "fra.ocir.io/frvkqml7frsy/crossplane-oci-xpkg_5.31.0:v0.0.2"
 }' | go run cmd/provider.go -config ./examples/run-locally-yaml/config.yaml
 ```
 

@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"github.com/devrocks/credential-provider-oke/internal/helpers"
+	"github.com/devrocks/credential-provider-oke/internal/provider"
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/common/auth"
 )
@@ -55,6 +56,13 @@ func signInstancePrincipalRequest(tokenRequest *http.Request) {
 	helpers.FatalIfError(err)
 	signer := common.DefaultRequestSigner(provider)
 	signer.Sign(tokenRequest)
+}
+
+func signResourcePrincipalRequest(tokenRequest *http.Request) {
+	provider, err := auth.ResourcePrincipalConfigurationProvider()
+	helpers.FatalIfError(err)
+	signer := common.DefaultRequestSigner(provider)
+	signer.Sign((tokenRequest))
 }
 
 func getDockerToken(urlTokenIssuer string, config helpers.Config) OcirDockerToken {
